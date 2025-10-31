@@ -11,19 +11,15 @@ pipeline {
             }
         }
 
-        stage("Install dependencies") {
+        stage("Build Image") {
             steps {
-                bat '''
-                %PYTHON% -m pip install -r requirements.txt
-                '''
+                bat 'docker build =t myimage'
             }
         }
 
         stage("ETL Pipeline"){
             steps {
-                bat '''
-                %PYTHON% etl.py
-                '''
+                bat 'docker run -d -p 8501:8501 myimage'
             }
         }
     }
