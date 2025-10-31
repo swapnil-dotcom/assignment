@@ -1,4 +1,5 @@
 import pandas as pd
+import streamlit as st
 
 
 data = {
@@ -8,4 +9,4 @@ data = {
 }
 
 df = pd.DataFrame(data)
-print(df)
+st.write(df)
